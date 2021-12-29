@@ -25,4 +25,5 @@ https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts?suppo
 ## Removing
 
 Use terraform destroy to remove instances
+
     terraform destroy -var-file=secret.tfvars --auto-approve
