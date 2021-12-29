@@ -2,6 +2,8 @@
 sudo swapoff -a
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y docker.io
+sudo systemctl enable docker.service
+sudo apt install -yt apt-transport-https curl
 sudo sh -c "echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' >> /etc/apt/sources.list.d/kubernetes.list"
 sudo sh -c "curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -"
 sudo apt-get update

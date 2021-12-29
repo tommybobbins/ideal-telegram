@@ -14,6 +14,32 @@ resource "google_compute_subnetwork" "k8s-nodes" {
 #  }
 }
 
+resource "google_compute_firewall" "internal" {
+  project     = var.project 
+  name        = "internal-k8s-firewall"
+  network     = google_compute_network.example-k8s.name
+  description = "No internal firewall rules"
+
+  allow {
+    protocol  = "tcp"
+  }
+
+  allow {
+    protocol  = "icmp"
+  }
+  
+  allow {
+    protocol  = "ipip"
+  }
+
+  allow {
+    protocol  = "udp"
+  }
+
+  source_tags = ["k8s"]
+  target_tags = ["k8s"]
+}
+
 resource "google_compute_firewall" "rules" {
   project     = var.project 
   name        = "k8s-firewall"
