@@ -8,7 +8,7 @@ sudo sh -c "curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-
 sudo apt-get update
 sudo apt-get install -y kubeadm=1.21.1-00 kubelet=1.21.1-00 kubectl=1.21.1-00
 sudo apt-mark hold kubelet kubeadm kubectl
-sudo kubeadm init --kubernetes-version 1.21.1 --pod-network-cidr 192.168.0.0/16
+sudo kubeadm init --kubernetes-version 1.21.1 --pod-network-cidr 192.168.0.0/16 | tee /tmp/kubeadm_init.out
 sudo mkdir -p /home/${USER}/.kube
 sudo cp -i /etc/kubernetes/admin.conf /home/${USER}/.kube/config
 sudo chown -R ${USER}:${USER} /home/${USER}/.kube
