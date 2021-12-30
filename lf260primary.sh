@@ -15,3 +15,5 @@ sudo chown -R ${USER}:${USER} /home/${USER}/.kube
 sudo curl https://docs.projectcalico.org/manifests/calico.yaml -o /tmp/calico.yaml
 su - ${USER} -c "kubectl apply -f /tmp/calico.yaml"
 su - ${USER} -c "kubectl get node"
+sleep 10
+su - ${USER} -c "kubectl taint nodes --all node-role.kubernetes.io/master-"
